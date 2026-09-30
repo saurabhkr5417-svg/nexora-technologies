@@ -269,3 +269,30 @@ body {
     height: min(480px, calc(100dvh - 160px));
   }
 }
+/* Nexora AI Round Floating Button */
+#nexora-chat-btn {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 50%;
+  justify-content: center;
+  position: fixed;
+  right: 16px;
+  bottom: 90px;
+  gap: 0;
+}
+
+.chat-btn-icon {
+  font-size: 30px;
+}
+
+.chat-btn-text {
+  display: none;
+}
+
+.chat-online {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  border: 2px solid #081727;
+}
