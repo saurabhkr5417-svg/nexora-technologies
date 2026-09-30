@@ -206,5 +206,93 @@
   <a href="#contact">☎<span>Contact</span></a>
 </nav> 
   <script src="script.js"></script>
+<!-- NEXORA AI CHATBOT -->
+<div id="nexora-chat">
+  <button id="nexora-chat-btn"
+          onclick="toggleNexoraChat()">
+    <span class="chat-btn-icon">✦</span>
+    <span class="chat-btn-text">Ask Nexora AI</span>
+    <span class="chat-online"></span>
+  </button>
+
+  <div id="nexora-chat-box" class="chat-hidden">
+    <div class="nexora-chat-header">
+      <div class="ai-avatar">✦</div>
+      <div class="ai-heading">
+        <strong>Nexora AI</strong>
+        <small><span class="online-dot"></span>
+          Online • AI Assistant
+        </small>
+      </div>
+      <button class="chat-close"
+              onclick="toggleNexoraChat()">×</button>
+    </div>
+
+    <div id="nexora-messages">
+      <div class="ai-message">
+        <div class="message-label">NEXORA AI</div>
+        Hi there! 👋 Welcome to Nexora
+        Technologies. How can I help you today?
+      </div>
+      <div class="quick-questions">
+        <button onclick="askNexora('What services do you offer?')">
+          Our Services
+        </button>
+        <button onclick="askNexora('Tell me about Nexora')">
+          About Nexora
+        </button>
+        <button onclick="askNexora('How can I contact you?')">
+          Contact
+        </button>
+      </div>
+    </div>
+
+    <div class="nexora-chat-footer">
+      <input id="nexora-input"
+             type="text"
+             placeholder="Message Nexora AI..."
+             onkeydown="if(event.key==='Enter') sendNexoraMessage()">
+      <button id="nexora-send"
+              onclick="sendNexoraMessage()">➤</button>
+    </div>
+    <div class="chat-powered">POWERED BY NEXORA TECHNOLOGIES</div>
+  </div>
+</div>
+
+<script>
+  function toggleNexoraChat() {
+    const box = document.getElementById('nexora-chat-box');
+    box.classList.toggle('chat-hidden');
+  }
+
+  function addNexoraMessage(text, type) {
+    const messages =
+      document.getElementById('nexora-messages');
+    const div = document.createElement('div');
+    div.className = type + '-message';
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function askNexora(question) {
+    document.getElementById('nexora-input').value = question;
+    sendNexoraMessage();
+  }
+
+  function sendNexoraMessage() {
+    const input = document.getElementById('nexora-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    addNexoraMessage(text, 'user');
+    input.value = '';
+
+    addNexoraMessage(
+      'Thanks for your message! AI connection will be added in the next step.',
+      'ai'
+    );
+  }
+</script>
 </body>
 </html>
